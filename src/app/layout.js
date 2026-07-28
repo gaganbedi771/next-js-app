@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,13 @@ export default function RootLayout({ children }) {
       >
         <header style={{ backgroundColor: "#f5f5f5", padding: "1rem" }}>
           <h1>My App</h1>
+          <button style={{ marginRight: "1rem" }}>
+            <Link href="/">Home</Link>
+          </button>
+          <button style={{ marginRight: "1rem" }}>
+            <Link href="/app/products/page">Products</Link>
+          </button>
+          
         </header>
 
         {children}

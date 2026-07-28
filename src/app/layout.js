@@ -19,7 +19,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body
+        style={{ height: "100vh", display: "flex", flexDirection: "column" }}
+      >
+        <header style={{ backgroundColor: "#f5f5f5", padding: "1rem" }}>
+          <h1>My App</h1>
+        </header>
+
+        {children}
+        <footer style={{ backgroundColor: "#f6f6f6", position: "absolute", bottom: 0, width: "100%", padding: "1rem" }}>
+          <p>&copy; 2026 My App. All rights reserved.</p>
+        </footer>
+      </body>
     </html>
   );
 }

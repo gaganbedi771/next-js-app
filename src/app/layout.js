@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
-import Image from "next/image";
+
+import Header from "./components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,34 +19,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
+
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body
         style={{ height: "100vh", display: "flex", flexDirection: "column" }}
       >
-        <header
-          style={{
-            backgroundColor: "#f5f5f5",
-            padding: "1rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <div>
-            <Image src="/assets/logo.png" alt="Logo" width={100} height={100} />
-            
-          </div>
-          <h1>My App</h1>
-          <div>
-            <button style={{ marginRight: "1rem" }}>
-              <Link href="/">Home</Link>
-            </button>
-            <button style={{ marginRight: "1rem" }}>
-              <Link href="/app/products/page">Products</Link>
-            </button>
-          </div>
-        </header>
+        <Header></Header>
 
         {children}
         <footer

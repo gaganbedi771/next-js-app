@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 
+
 const page = () => {
   const [productData, setProductData] = React.useState([]);
   const getDataHandler = async () => {

@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import Header from "./components/Header";
+import Providers from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body
         style={{ height: "100vh", display: "flex", flexDirection: "column" }}
       >
+        <Providers> 
         <Header></Header>
 
         {children}
@@ -40,6 +42,7 @@ export default function RootLayout({ children }) {
         >
           <p>&copy; 2026 My App. All rights reserved.</p>
         </footer>
+        </Providers>
       </body>
     </html>
   );

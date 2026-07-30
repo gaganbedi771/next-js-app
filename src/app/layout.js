@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,19 +24,40 @@ export default function RootLayout({ children }) {
       <body
         style={{ height: "100vh", display: "flex", flexDirection: "column" }}
       >
-        <header style={{ backgroundColor: "#f5f5f5", padding: "1rem" }}>
+        <header
+          style={{
+            backgroundColor: "#f5f5f5",
+            padding: "1rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <Image src="/assets/logo.png" alt="Logo" width={100} height={100} />
+            
+          </div>
           <h1>My App</h1>
-          <button style={{ marginRight: "1rem" }}>
-            <Link href="/">Home</Link>
-          </button>
-          <button style={{ marginRight: "1rem" }}>
-            <Link href="/app/products/page">Products</Link>
-          </button>
-          
+          <div>
+            <button style={{ marginRight: "1rem" }}>
+              <Link href="/">Home</Link>
+            </button>
+            <button style={{ marginRight: "1rem" }}>
+              <Link href="/app/products/page">Products</Link>
+            </button>
+          </div>
         </header>
 
         {children}
-        <footer style={{ backgroundColor: "#f6f6f6", position: "absolute", bottom: 0, width: "100%", padding: "1rem" }}>
+        <footer
+          style={{
+            backgroundColor: "#f6f6f6",
+            position: "absolute",
+            bottom: 0,
+            width: "100%",
+            padding: "1rem",
+          }}
+        >
           <p>&copy; 2026 My App. All rights reserved.</p>
         </footer>
       </body>

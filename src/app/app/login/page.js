@@ -27,14 +27,14 @@ const page = () => {
   const submitHandler =async (e) => {
     e.preventDefault();
   
-
     let err= validate();
 
     if(Object.keys(err).length>0){
+        console.log("Validation errors:", err);
         return
     }
 
-    const res= await fetch("/api/login",{
+    const res= await fetch("/api/products/login",{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
@@ -43,7 +43,8 @@ const page = () => {
     })
 
     if(res.ok){
-        router.push("/app/page");
+        router.push("/app/products/page");
+        router.refresh();
     }
     else{
         alert("Invalid credentials");

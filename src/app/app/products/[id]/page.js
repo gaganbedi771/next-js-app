@@ -1,36 +1,30 @@
-"use client"
-import React, { useEffect } from 'react'
 import Image from "next/image";
 
-const page = ({params}) => {
-    const {id} = React.use(params);
-    const [productData, setProductData] = React.useState(null);
+export async function generateMetadata({ params }) {
+  const { id } = await params;
 
-    useEffect(() => {
+  const response = await fetch(`https://dummyjson.com/products/${id}`);
+  const product = await response.json();
 
-      async function fetchProductData() {
-        try {
-          const response = await fetch(`/api/products/${id}`);
-          const data = await response.json();
-          setProductData(data);
-        } catch (error) {
-          console.error("Error fetching product data:", error);
-        }
-      }
-
-      fetchProductData();
-    }, []);
-
-    
-  return (
-    <div>
-      <h1>Product [{id}] Details</h1>
-      {productData!==null && <><p>Title: {productData.title}</p>
-      <Image src="/assets/shampoo.jpg" alt="shampoo image" width={100} height={100}></Image>
-      <p>Description: {productData.description}</p>
-      <p>Price: ${productData.price}</p> </>}
-    </div>
-  )
+  return {
+    title: `${product.title} - Products Store`,
+  };
 }
 
-export default page
+export default async function Page({ params }) {
+  const { id } = await params;
+
+  const response = await fetch(`https://dummyjson.com/products/${id}`);
+  const product = await response.json();
+
+  return (
+    <div>
+      <h1>{product.title}</h1>
+
+      <Image src="/assets/shampoo.jpg" alt="Product" width={100} height={100} />
+
+      <p>{product.description}</p>
+      <p>${product.price}</p>
+    </div>
+  );
+}
